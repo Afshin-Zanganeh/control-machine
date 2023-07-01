@@ -1,0 +1,43 @@
+.app {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #333;
+}
+
+.range-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.navigation-buttons-row {
+  display: flex;
+  justify-content: center;
+}
+
+.navigation-button {
+  margin: 16px 64px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover, &:active {
+    transform: scale(1.1);
+  }
+}
+
+.send-message-button-wrappers {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  margin: 16px 8px;
+  cursor: pointer;
+  background-color: #33a1eb;
+  color: #fff;
+}
