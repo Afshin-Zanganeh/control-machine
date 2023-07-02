@@ -4,9 +4,24 @@
   background-color: #333;
 }
 
+.title {
+  text-align: center;
+  color: #fff;
+  font-size: 32px;
+  padding: 16px 16px 24px;
+  font-weight: 700;
+}
+
 .range-wrapper {
   display: flex;
   justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  margin: 16px 0;
+
+  input {
+    margin-left: 16px;
+  }
 }
 
 .navigation-buttons-row {
@@ -19,7 +34,8 @@
   color: #fff;
   cursor: pointer;
   transition: all 0.3s;
-  &:hover, &:active {
+  &:hover,
+  &:active {
     transform: scale(1.1);
   }
 }
@@ -27,7 +43,9 @@
 .send-message-button-wrappers {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .button {
@@ -40,4 +58,21 @@
   cursor: pointer;
   background-color: #33a1eb;
   color: #fff;
+  width: 256px;
+}
+
+.button.light {
+  background-color: rgba(255, 230, 0, 0.974);
+  color: #000;
+}
+
+.button.stop {
+  background-color: rgb(218, 42, 42);
+}
+
+.footer {
+  color: #fff;
+  padding: 16px 8px;
+  text-align: center;
+  margin-top: 32px;
 }

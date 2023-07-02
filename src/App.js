@@ -18,6 +18,7 @@ function App() {
   const client = useRef(null);
   const [isSub, setIsSub] = useState(false);
   const [light, setLight] = useState(0);
+  const [speed, setSpeed] = useState(0);
 
   useEffect(() => {
     console.log("refreshing...");
@@ -84,6 +85,7 @@ function App() {
 
   return (
     <div className="app">
+      <div className="title">Control Machine</div>
       <div className="navigation-buttons">
         <div className="navigation-buttons-row">
           <div
@@ -145,6 +147,7 @@ function App() {
         </div>
       </div>
       <div className="range-wrapper">
+      <div>LIGHT:</div>
         <input
           type={"range"}
           value={light}
@@ -153,8 +156,18 @@ function App() {
           onChange={(e) => setLight(e.target.value)}
         />
       </div>
+      <div className="range-wrapper">
+        <div>SPEED:</div>
+        <input
+          type={"range"}
+          value={speed}
+          min={0}
+          max={255}
+          onChange={(e) => setSpeed(e.target.value)}
+        />
+      </div>
       <div className="send-message-button-wrappers">
-        <button
+        {/* <button
           className="button"
           onClick={() =>
             mqttPublish({
@@ -165,7 +178,7 @@ function App() {
           }
         >
           MQTT PUBLISH MESSAGE
-        </button>
+        </button> */}
         <button
           className="button"
           onClick={() =>
@@ -179,7 +192,7 @@ function App() {
           SEND SPEED
         </button>
         <button
-          className="button"
+          className="button light"
           onClick={() =>
             mqttPublish({
               topic: "esp32/test",
@@ -191,11 +204,11 @@ function App() {
           SEND LIGHT
         </button>
         <button
-          className="button"
+          className="button stop"
           onClick={() =>
             mqttPublish({
               topic: "esp32/test",
-              payload: "Move,0",
+              payload: "MoveCar,0",
               qos: 2,
             })
           }
@@ -214,6 +227,7 @@ function App() {
           mqtt subscribe
         </button> */}
       </div>
+      <div className="footer">&copy; 2023, By Afshin Zanganeh & Seyed Emad Mousavi</div>
     </div>
   );
 }
