@@ -16,7 +16,6 @@ const password = "12345678";
 
 function App() {
   const client = useRef(null);
-  const [isSub, setIsSub] = useState(false);
   const [light, setLight] = useState(0);
   const [speed, setSpeed] = useState(0);
 
@@ -35,34 +34,6 @@ function App() {
     });
   }, []);
 
-  const mqttSub = (subscription) => {
-    if (client.current) {
-      const { topic, qos } = subscription;
-      client.current.subscribe(topic, { qos }, (error) => {
-        if (error) {
-          console.log("Subscribe to topics error", error);
-          return;
-        }
-        console.log(`Subscribe to topics: ${topic}`);
-        setIsSub(true);
-      });
-    }
-  };
-
-  const mqttUnSub = (subscription) => {
-    if (client.current) {
-      const { topic, qos } = subscription;
-      client.current.unsubscribe(topic, { qos }, (error) => {
-        if (error) {
-          console.log("Unsubscribe error", error);
-          return;
-        }
-        console.log(`unsubscribed topic: ${topic}`);
-        setIsSub(false);
-      });
-    }
-  };
-
   const mqttPublish = (context) => {
     if (client.current) {
       console.log("publishing...");
@@ -73,14 +44,6 @@ function App() {
         }
       });
     }
-  };
-
-  const handleOnTouchEnd = () => {
-    mqttPublish({
-      topic: "esp32/test",
-      payload: "MoveCar,0",
-      qos: 0,
-    });
   };
 
   return (
@@ -97,7 +60,6 @@ function App() {
                 qos: 2,
               })
             }
-            // onTouchEnd={handleOnTouchEnd}
           >
             <BsFillArrowUpSquareFill fontSize={64} />
           </div>
@@ -112,7 +74,6 @@ function App() {
                 qos: 2,
               })
             }
-            // onTouchEnd={handleOnTouchEnd}
           >
             <BsFillArrowLeftSquareFill fontSize={64} />
           </div>
@@ -125,7 +86,6 @@ function App() {
                 qos: 2,
               })
             }
-            // onTouchEnd={handleOnTouchEnd}
           >
             <BsFillArrowRightSquareFill fontSize={64} />
           </div>
@@ -140,7 +100,6 @@ function App() {
                 qos: 2,
               })
             }
-            // onTouchEnd={handleOnTouchEnd}
           >
             <BsFillArrowDownSquareFill fontSize={64} />
           </div>
@@ -167,18 +126,6 @@ function App() {
         />
       </div>
       <div className="send-message-button-wrappers">
-        {/* <button
-          className="button"
-          onClick={() =>
-            mqttPublish({
-              topic: "esp32/test",
-              payload: "hello from afshin",
-              qos: 2,
-            })
-          }
-        >
-          MQTT PUBLISH MESSAGE
-        </button> */}
         <button
           className="button"
           onClick={() =>
@@ -215,17 +162,6 @@ function App() {
         >
           STOP
         </button>
-        {/* <button
-          className="button"
-          onClick={() =>
-            mqttSub({
-              topic: "esp32/test",
-              qos: 0,
-            })
-          }
-        >
-          mqtt subscribe
-        </button> */}
       </div>
       <div className="footer">&copy; 2023, By Afshin Zanganeh & Seyed Emad Mousavi</div>
     </div>
