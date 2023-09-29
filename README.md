@@ -2,7 +2,7 @@
 
 [watch demo video](https://www.aparat.com/v/Qe7y2)
 
-This project connects to mqtt server of the physical Car by mqtt protocol and dispath commands to drive and control the car. It is the Embedded Real-Time Systems and IoT course project.
+This project connects to mqtt server of the physical Car by mqtt protocol and dispatch commands to drive and control the car. It is the Embedded Real-Time Systems and IoT course project.
 
 Desktop Website:
 ![desktop website](./screenshots/desktop.png)
